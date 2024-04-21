@@ -107,12 +107,12 @@ int main()
     d2mmFile << "p,m,n,q,Speedup,Cost\n";
 
     // Matrices of size m x n & n x q
-    for(int p = 4; p <= 8; p += 4){
-        for(int m = 1; m <= 10; m++){
-            for(int n = 1; n <= 10; n++){
-                for(int q = 10; q >= 1; q--){
-                    std::cout << "m x n : n x q = ";
-                    std::cout << m << " x " << n << " : " <<  n << " x " << q << std::endl;
+    for(int p = 4; p <= 100; p += 4){
+        for(int m = 0; m < 1000; m++){
+            for(int n = 0; n < 1000; n++){
+                for(int q = 0; q < 1000; q++){
+                    std::cout << "(m x n : n x q = ";
+                    std::cout << (m + 1) << " x " << (n + 1) << " : " <<  (n + 1) << " x " << (q + 1) << std::endl;
                     std::cout << "Number of processors: " << p << std::endl;
                     std::cout << std::endl;
 
@@ -144,16 +144,16 @@ int main()
                     std::cout << std::endl;
 
                     Result results = testSMM(A, B, NUMBER_OF_RUNS);
-                    smmFile << p << "," << m << "," << n << "," << q << "," << results.speedup << "\n";
+                    smmFile << p << "," << (m + 1) << "," << (n + 1) << "," << (q + 1) << "," << results.speedup << "\n";
 
                     Result pmmResults = testPMM(A, B, NUMBER_OF_RUNS, p, results.speedup);
-                    pmmFile << p << "," << m << "," << n << "," << q << "," << pmmResults.speedup << "," << pmmResults.cost << "\n";
+                    pmmFile << p << "," << (m + 1) << "," << (n + 1) << "," << (q + 1) << "," << pmmResults.speedup << "," << pmmResults.cost << "\n";
 
                     Result d1mmResults = test1DMM(A, B, NUMBER_OF_RUNS, p, results.speedup);
-                    d1mmFile << p << "," << m << "," << n << "," << q << "," << d1mmResults.speedup << "," << d1mmResults.cost << "\n";
+                    d1mmFile << p << "," << (m + 1) << "," << (n + 1) << "," << (q + 1) << "," << d1mmResults.speedup << "," << d1mmResults.cost << "\n";
 
                     Result d2mmResults = test2DMM(A, B, NUMBER_OF_RUNS, p, results.speedup);
-                    d2mmFile << p << "," << m << "," << n << "," << q << "," << d2mmResults.speedup << "," << d2mmResults.cost << "\n";
+                    d2mmFile << p << "," << (m + 1) << "," << (n + 1) << "," << (q + 1) << "," << d2mmResults.speedup << "," << d2mmResults.cost << "\n";
                 }
             }
         }
