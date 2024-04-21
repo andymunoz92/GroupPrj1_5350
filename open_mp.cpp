@@ -7,7 +7,7 @@
 #include <ctime> 
 
 #define DEFAULT_NUM_THREADS 9
-#define NUMBER_OF_RUNS 5
+#define NUMBER_OF_RUNS 1
 
 /**
  * For the sake of simplicity, we will implement the algorithms as well as the correctness tests in one
@@ -340,7 +340,7 @@ Result testSMM(std::vector<std::vector<int>> A, std::vector<std::vector<int>> B,
         std::cout << "Time taken by serialMM: " << duration_serial.count() << " microseconds" << std::endl;
         sum += static_cast<double>(duration_serial.count());
         
-        if(i == 4){
+        if(i == 0){
             std::cout << std::endl;
             // Display the C
             std::cout << "C matrix:" << std::endl;
@@ -382,7 +382,7 @@ Result testPMM(std::vector<std::vector<int>> A, std::vector<std::vector<int>> B,
         std::cout << "Time taken by parallelMM: " << duration_parallel.count() << " microseconds" << std::endl;
         sum += static_cast<double>(duration_parallel.count());
         
-        if(i == 4){
+        if(i == 0){
             std::cout << std::endl;
             // Display the C
             std::cout << "C matrix:" << std::endl;
@@ -433,7 +433,7 @@ Result test1DMM(std::vector<std::vector<int>> A, std::vector<std::vector<int>> B
         std::cout << "Time taken by oneDMM: " << duration_1DMM.count() << " microseconds" << std::endl;
         sum += static_cast<double>(duration_1DMM.count());
         
-        if(i == 4){
+        if(i == 0){
             std::cout << std::endl;
             // Display the C
             std::cout << "C matrix:" << std::endl;
@@ -484,7 +484,7 @@ Result test2DMM(std::vector<std::vector<int>> A, std::vector<std::vector<int>> B
         std::cout << "Time taken by 2DMM: " << duration_2DMM.count() << " microseconds" << std::endl;
         sum += static_cast<double>(duration_2DMM.count());
         
-        if(i == 4){
+        if(i == 0){
             std::cout << std::endl;
             // Display the C
             std::cout << "C matrix:" << std::endl;
